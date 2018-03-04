@@ -1,0 +1,19 @@
+[Unit]
+Description=Homebridge
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run \
+                          --name homebridge \
+                          --rm \
+                          -v /etc/homebridge:/homebridge \
+                          -v /etc/avahi/services:/etc/avahi/services \
+                          -p 51826:51826 \
+			              -p 5353:5353/udp \
+               		      nrwiersma/homebridge:latest
+ExecStop=/usr/bin/docker kill homebridge
+
+[Install]
+WantedBy = multi-user.target
