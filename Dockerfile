@@ -10,7 +10,7 @@ COPY entrypoint.sh /entrypoint.sh
 ENV HOMEBRIDGE_VERSION=0.4.38
 RUN npm install -g --unsafe-perm homebridge@${HOMEBRIDGE_VERSION} \
                                  homebridge-mqtt-switch-tasmota \
-                                 homebridge-samsungtv
+                                 homebridge-samsungtv2016
 
 VOLUME /homebridge
 
